@@ -355,9 +355,12 @@
   .reviews-track {
     display: flex;
     gap: 16px;
-    overflow: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
   .review {
+    flex: 0 0 auto;
     min-width: 340px;
     padding: 20px 22px;
     border-radius: 16px;
@@ -563,6 +566,18 @@
   @media (max-width: 520px) {
     header {
       padding: 12px 14px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact {
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+    .contact div[style] {
+      flex: 1 1 100%;
+      text-align: center !important;
     }
     .hero h2 {
       font-size: 24px;
@@ -574,6 +589,11 @@
     .hero {
       min-height: 180px;
       padding: 20px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-left {
+      width: 100%;
     }
     .gold-frame {
       width: 96px;

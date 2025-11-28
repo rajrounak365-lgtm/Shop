@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dinesh Kirana — Premium</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0e0c0b;
+    --panel: #151313;
+    --muted: #b7a79a;
+    --gold: #d4af37;
+    --accent: #ff7a18;
+    --glass: rgba(255, 255, 255, 0.04);
+    --card: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    --shadow-dark: rgba(0, 0, 0, 0.6);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 800px at 10% 10%, rgba(212, 175, 55, 0.06), transparent 8%),
+      radial-gradient(1000px 700px at 90% 90%, rgba(255, 122, 24, 0.04), transparent 8%),
+      var(--bg);
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 60px;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.25));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-frame {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    padding: 8px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.2));
+    box-shadow: 0 6px 22px var(--shadow-dark), 0 0 0 3px rgba(212, 175, 55, 0.06) inset;
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .logo-frame:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  }
+  .logo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.8px;
+    color: var(--gold);
+    margin: 0;
+    user-select: none;
+  }
+  .sub-title {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .contact {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .contact .phone {
+    background: linear-gradient(90deg, var(--gold), #ffb86b);
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: #111;
+    font-weight: 800;
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+  }
+  .contact .phone svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--accent);
+  }
+  .contact small {
+    display: block;
+    font-size: 12px;
+    color: #fff8;
+  }
+
+  /* Layout wrapper */
+  .container {
+    max-width: 1200px;
+    margin: 28px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Left / Main */
+  .main {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 14px 48px var(--shadow-dark);
+    overflow: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.20)),
+      url('static/shop.jpg') center/cover no-repeat;
+    border-radius: 16px;
+    padding: 32px;
+    min-height: 240px;
+    position: relative;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+  }
+  .hero-left {
+    flex: 1;
+    color: #fff;
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.7);
+  }
+  .hero h2 {
+    font-family: 'Montserrat';
+    font-size: 36px;
+    margin: 0;
+    color: var(--gold);
+    letter-spacing: 0.6px;
+    line-height: 1.1;
+  }
+  .hero p {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 17px;
+    font-weight: 400;
+    max-width: 480px;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 26px;
+    border-radius: 16px;
+    background: var(--gold);
+    color: #111;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 36px rgba(212, 175, 55, 0.18);
+    transform: translateZ(0);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    user-select: none;
+  }
+  .hero-cta:hover,
+  .hero-cta:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 48px rgba(212, 175, 55, 0.28);
+    outline: none;
+  }
+
+  /* Hero SVG art (right) */
+  .hero-art {
+    width: 340px;
+    height: 220px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    box-shadow: 0 20px 48px var(--shadow-dark);
+    transition: box-shadow 0.4s ease;
+  }
+  .hero-art:hover {
+    box-shadow: 0 28px 64px rgba(212, 175, 55, 0.6);
+  }
+  /* realistic groceries SVG styling */
+  .hero-art svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--gold);
+    filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.7));
+    transform: translateY(0);
+    transition: transform 0.6s ease;
+  }
+  .hero-art:hover svg {
+    transform: translateY(-10px) rotate(-3deg) scale(1.03);
+  }
+
+  /* Trust & stat row */
+  .trust-row {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .badge {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.08));
+    color: var(--gold);
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    user-select: none;
+  }
+  .badge svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--gold);
+  }
+  .stat {
+    background: var(--glass);
+    padding: 16px 24px;
+    border-radius: 14px;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 15px;
+    user-select: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Offers banner */
+  .offers {
+    margin-top: 28px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    overflow: hidden;
+    padding: 12px;
+    border-radius: 16px;
+    background: linear-gradient(90deg, rgba(255, 122, 24, 0.08), rgba(212, 175, 55, 0.05));
+    border: 1px solid rgba(255, 122, 24, 0.08);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.12);
+  }
+  .offer-item {
+    min-width: 280px;
+    padding: 18px 22px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255, 122, 24, 0.14), rgba(0, 0, 0, 0.02));
+    color: white;
+    font-weight: 900;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    margin-right: 14px;
+    user-select: none;
+    font-size: 15px;
+  }
+  .offers-track {
+    display: flex;
+    gap: 14px;
+    animation: offersScroll 18s linear infinite;
+  }
+  @keyframes offersScroll {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-40%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Categories grid */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .cat {
+    background: var(--card);
+    padding: 18px 14px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--muted);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  .cat:hover,
+  .cat:focus {
+    background-color: var(--gold);
+    color: #111;
+    outline: none;
+    box-shadow: 0 12px 36px rgba(212, 175, 55, 0.4);
+  }
+
+  /* Reviews slider */
+  .reviews {
+    margin-top: 32px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  }
+  .reviews h3 {
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 800;
+    font-size: 22px;
+    user-select: none;
+  }
+  .reviews-track {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+  }
+  .review {
+    min-width: 340px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.5);
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    user-select: none;
+  }
+  .review h4 {
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .review p {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .review-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .rc-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    user-select: none;
+  }
+  .rc-btn.active,
+  .rc-btn:hover,
+  .rc-btn:focus-visible {
+    background: var(--gold);
+    color: #111;
+    border-color: rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+
+  /* Right sidebar */
+  .side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .card-side {
+    background: var(--panel);
+    padding: 22px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 14px 48px var(--shadow-dark);
+    color: var(--muted);
+    font-size: 15px;
+    user-select: none;
+  }
+  .gold-frame {
+    width: 130px;
+    height: 130px;
+    border-radius: 18px;
+    padding: 10px;
+    border: 4px solid rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.07), rgba(212, 175, 55, 0.025));
+    box-shadow: 0 14px 48px rgba(212, 175, 55, 0.08);
+    transition: box-shadow 0.4s ease;
+  }
+  .gold-frame:hover {
+    box-shadow: 0 22px 56px rgba(212, 175, 55, 0.25);
+  }
+  .gold-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  .owner {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 18px;
+  }
+  .owner img {
+    width: 70px;
+    height: 70px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  .owner img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+  }
+  .owner .meta {
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 17px;
+  }
+  .owner .meta + div {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  .timing {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 14px;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.015));
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .timing .open {
+    color: #bfffbf;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .timing .open svg {
+    width: 20px;
+    height: 20px;
+    fill: #bfffbf;
+  }
+  .timing div:last-child {
+    margin-left: auto;
+    text-align: right;
+    font-weight: 800;
+    color: #bfffbf;
+    font-size: 16px;
+  }
+  .timing small {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .map-btn {
+    display: block;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 14px;
+    text-align: center;
+    background: linear-gradient(90deg, var(--gold), #ffbf6b);
+    color: #111;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 14px 40px rgba(212, 175, 55, 0.22);
+    user-select: none;
+    transition: background 0.3s ease;
+  }
+  .map-btn:hover,
+  .map-btn:focus-visible {
+    background: linear-gradient(90deg, #ffbf6b, var(--gold));
+    outline: none;
+  }
+  .map-btn.transparent {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.06);
+    color: var(--gold);
+    box-shadow: none;
+    font-weight: 800;
+  }
+  .map-btn.transparent:hover,
+  .map-btn.transparent:focus-visible {
+    background: var(--gold);
+    color: #111;
+    outline: none;
+  }
+
+  /* responsive */
+  @media (max-width: 1000px) {
+    .container {
+      grid-template-columns: 1fr;
+      padding: 0 16px;
+    }
+    .hero-art {
+      display: none;
+    }
+  }
+  @media (max-width: 520px) {
+    header {
+      padding: 12px 14px;
+    }
+    .hero h2 {
+      font-size: 24px;
+    }
+    .hero p {
+      font-size: 14px;
+      max-width: 100%;
+    }
+    .hero {
+      min-height: 180px;
+      padding: 20px 16px;
+    }
+    .gold-frame {
+      width: 96px;
+      height: 96px;
+    }
+    .cat {
+      font-size: 14px;
+      padding: 14px 10px;
+    }
+    .review {
+      min-width: 280px;
+      font-size: 14px;
+      padding: 16px 18px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo-frame"><img src="logo.png" alt="logo"></div>
+    <div>
+      <h1>Dinesh Kirana</h1>
+      <div class="sub-title">Trusted Grocery Store • Since 1998</div>
+    </div>
+  </div>
+
+  <div class="contact" role="contentinfo" aria-label="Contact information">
+    <div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.7)">Contact</div>
+      <div class="phone" aria-label="Phone number">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+          <path d="M2.004 3.001a1 1 0 0 1 1.003-1h3.588a1 1 0 0 1 .986 1.204l-.654 3.27a1 1 0 0 1-.976.77l-2.1.11a11.041 11.041 0 0 0 5.516 5.516l.11-2.1a1 1 0 0 1 .77-.976l3.269-.654a1 1 0 0 1 1.204.987v3.589a1 1 0 0 1-1 1c-7.18 0-13-5.82-13-13z"/>
+        </svg>
+        +91 9576450015
+      </div>
+    </div>
+    <div style="text-align:right" aria-label="Store opening hours and community service">
+      <small>Open: <strong>7 AM — 10 PM</strong></small>
+      <div style="font-size:12px;margin-top:6px;color:var(--muted)">Serving the community 25+ years</div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- MAIN -->
+  <section class="main" aria-label="Main content">
+    <!-- HERO -->
+    <div class="hero" role="img" aria-label="Shop hero with fresh groceries">
+      <div class="hero-left">
+        <h2>Fresh • Trusted • Affordable</h2>
+        <p>Daily groceries, fresh produce, essentials — handpicked for your family. Experience friendly neighbourhood service for over <strong>25 years</strong>.</p>
+        <a class="hero-cta" href="#categories" role="button" tabindex="0">Explore Categories</a>
+
+        <div class="trust-row" style="margin-top:18px" aria-label="Store trust and quality stats">
+          <div class="badge" aria-label="25 plus years award">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2l2.39 6.93h7.29l-5.9 4.28 2.38 6.93-5.9-4.28-5.9 4.28 2.39-6.93-5.9-4.28h7.29z"/></svg>
+            25+ Years
+          </div>
+          <div class="stat" aria-label="Local favorite status">Local Favorite</div>
+          <div class="stat" aria-label="Quality produce status">Quality Produce</div>
+        </div>
+
+        <!-- Offers -->
+        <div class="offers" aria-live="polite" aria-atomic="true" aria-label="Current offers">
+          <div class="offers-track" id="offersTrack">
+            <div class="offer-item">Flat 5% off on Pulses — This Week Only</div>
+            <div class="offer-item">Fresh Veggies Arrived — Special Prices</div>
+            <div class="offer-item">Sugar &amp; Atta: Daily Morning Deals</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-art" aria-hidden="true" aria-label="Illustration of groceries">
+        <!-- Realistic Grocery SVG (integrated & stylized) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.823 56.823" role="img" aria-label="grocery art">
+          <g>
+            <path d="M36.272,25.308c0.106,0.036,0.215,0.053,0.321,0.053c0.417,0,0.806-0.262,0.947-0.679c0.313-0.918,1.314-1.411,2.232-1.1   c1.962,0.664,4.103-0.389,4.768-2.352c0.178-0.522-0.102-1.091-0.625-1.269c-0.525-0.177-1.091,0.103-1.269,0.626   c-0.312,0.919-1.313,1.412-2.232,1.1c-1.959-0.661-4.102,0.39-4.768,2.352C35.469,24.561,35.749,25.13,36.272,25.308z"/>
+            <path d="M38.638,18.34c0.106,0.036,0.215,0.053,0.321,0.053c0.417,0,0.806-0.262,0.947-0.679c0.151-0.445,0.466-0.805,0.888-1.013   s0.899-0.238,1.344-0.087c1.962,0.664,4.102-0.389,4.768-2.353c0.178-0.522-0.103-1.091-0.625-1.269   c-0.523-0.18-1.091,0.103-1.268,0.626c-0.312,0.92-1.311,1.413-2.232,1.101c-0.952-0.323-1.971-0.257-2.871,0.188   c-0.9,0.444-1.574,1.213-1.897,2.164C37.834,17.594,38.115,18.162,38.638,18.34z"/>
+            <path d="M41.002,11.372c0.107,0.036,0.215,0.053,0.322,0.053c0.417,0,0.806-0.262,0.947-0.679c0.23-0.678,0.971-1.043,1.648-0.813   c0.835,0.283,1.73,0.225,2.521-0.164c0.79-0.39,1.381-1.064,1.665-1.899c0.178-0.522-0.102-1.091-0.625-1.269   c-0.525-0.179-1.091,0.103-1.269,0.626c-0.112,0.329-0.345,0.595-0.656,0.748c-0.311,0.153-0.663,0.176-0.993,0.063   c-1.722-0.581-3.601,0.343-4.185,2.064C40.2,10.626,40.479,11.194,41.002,11.372z"/>
+            <path d="M48.246,25.234c-0.174-0.119-0.37-0.187-0.57-0.213c1.987-6.457,3.077-12.783,3.233-18.808   c0.049-1.895-0.877-4.425-2.744-5.596c-0.896-0.563-2.364-1.027-4.27-0.046c-2.987,1.541-5.123,6.074-6.839,9.718   c-0.099,0.21-0.196,0.415-0.292,0.618c-0.379-1.743-1.531-3.234-3.169-4.012c-0.386-1.856-1.858-3.31-3.708-3.687   c-0.02-0.104-0.045-0.206-0.076-0.309c-0.381-1.302-1.53-2.282-2.859-2.44c-0.749-0.089-1.491,0.066-2.125,0.437   c-0.54-0.301-1.146-0.461-1.768-0.461c-1.739,0-3.2,1.213-3.581,2.836c-1.901,0.518-3.295,2.263-3.31,4.291   c-2.169,0.56-3.749,2.52-3.749,4.851c0,0.618,0.116,1.23,0.339,1.807c-0.563,0.695-0.875,1.565-0.875,2.478   c0,0.548,0.113,1.076,0.326,1.564c-0.999-1.09-2.405-1.981-3.984-1.923c-0.552,0.018-0.986,0.479-0.969,1.031   c0.017,0.541,0.461,0.969,0.999,0.969c0.034,0.001,0.065-0.002,0.097-0.002c0.937,0,1.808,0.62,2.442,1.34   c-1.586,0.457-3.498,1.201-4.39,2.883c-0.537,1.015-0.6,2.26-0.242,3.686c-0.173,0.289-0.268,0.625-0.25,0.983l1.702,24.187   c0.155,3.033,2.655,5.408,5.691,5.408h28.071c3.036,0,5.536-2.375,5.69-5.39l1.745-25.028c0-0.006,0.001-0.012,0.001-0.018   C48.84,25.927,48.627,25.496,48.246,25.234z"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div id="categories" class="categories" aria-label="Product categories">
+      <div class="cat" tabindex="0">Vegetables</div>
+      <div class="cat" tabindex="0">Dairy &amp; Beverages</div>
+      <div class="cat" tabindex="0">Rice, Flour &amp; Grains</div>
+      <div class="cat" tabindex="0">Snacks &amp; Biscuits</div>
+      <div class="cat" tabindex="0">Oils &amp; Spices</div>
+      <div class="cat" tabindex="0">Soaps &amp; Cleaning</div>
+      <div class="cat" tabindex="0">Pooja Samagri (Kapoor, Dhoop, Agarbatti, Haldi, Kumkum)</div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="reviews" aria-label="Customer reviews">
+      <h3>What Customers Say</h3>
+      <div class="reviews-track" id="reviewsTrack" role="list">
+        <div class="review" role="listitem" tabindex="0">
+          <h4>Excellent quality</h4>
+          <p>“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.</p>
+        </div>
+        <div class="review" role="listitem" tabindex="0">
+          <h4>Trusted store</h4>
+          <p>“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.</p>
+        </div>
+        <div class="review" role="listitem" tabindex="0">
+          <h4>Great variety</h4>
+          <p>“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.</p>
+        </div>
+      </div>
+      <div class="review-controls" id="reviewControls" aria-label="Review navigation" aria-hidden="false"></div>
+    </div>
+
+  </section>
+
+  <!-- SIDE -->
+  <aside class="side" aria-label="Sidebar information">
+    <div class="card-side" role="region" aria-labelledby="brand-title">
+      <div class="gold-frame"><img src="logo.png" alt="brand logo"></div>
+      <div id="brand-title" style="text-align:center;margin-top:14px;font-weight:800;color:var(--gold);font-size:18px;">Dinesh Kirana</div>
+      <div style="text-align:center;color:var(--muted);margin-top:8px;font-size:15px;">Premium Local Grocery • Since 1998</div>
+
+      <div style="margin-top:16px" class="owner">
+        <img src="owner.jpeg" alt="owner Dinesh Chaurashiya">
+        <div>
+          <div class="meta">Owner: Dinesh Chaurashiya</div>
+          <div>Welcoming customers every day</div>
+        </div>
+      </div>
+
+      <div class="timing" aria-label="Store opening hours">
+        <div class="open" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1a11 11 0 1 0 11 11A11.013 11.013 0 0 0 12 1Zm.5 6.25v5.5l4.75 2.85-.75 1.23-5.5-3.3V7.25Z"/>
+          </svg>
+          Opening
+        </div>
+        <div>
+          <div style="font-weight:900;color:#bfffbf">7 AM — 10 PM</div>
+          <small style="font-size:12px;color:var(--muted)">Open Today</small>
+        </div>
+      </div>
+
+      <a class="map-btn" target="_blank" href="https://www.google.com/search?q=Dinesh+Kirana" aria-label="View store location on map">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; width: 18px; height: 18px; margin-right: 6px;">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/>
+        </svg>
+        View on Map
+      </a>
+    </div>
+
+    <div class="card-side" role="region" aria-labelledby="owner-message-title">
+      <h4 id="owner-message-title" style="color:var(--gold);margin-bottom:8px; user-select:none;">Owner's Message</h4>
+      <p style="color:var(--muted);font-size:15px;line-height:1.5; font-weight: 400;">
+        Welcome to Dinesh Kirana — our family has proudly served fresh groceries for over 25 years. We value trust, quality, and community. Visit us for daily fresh picks.
+      </p>
+    </div>
+
+    <div class="card-side" style="text-align:center" role="region" aria-label="Contact information">
+      <div style="font-size:14px;color:var(--muted); user-select:none;">Contact</div>
+      <div style="font-size:22px;font-weight:800;margin-top:8px; user-select:none;">+91 9576450015</div>
+      <a class="map-btn transparent" href="tel:9576450015" aria-label="Call store now">Call Now</a>
+    </div>
+
+  </aside>
+
+</main>
+
+<script>
+  // Simple reviews slider (auto + manual)
+  (function() {
+    const track = document.getElementById('reviewsTrack');
+    const controls = document.getElementById('reviewControls');
+    const reviews = Array.from(track.children);
+    const total = reviews.length;
+    let index = 0;
+    // create controls
+    for (let i = 0; i < total; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'rc-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = i + 1;
+      btn.setAttribute('aria-label', 'View review ' + (i + 1));
+      btn.onclick = () => {
+        index = i;
+        update();
+        resetAuto();
+      };
+      controls.appendChild(btn);
+    }
+    function update() {
+      const width = reviews[0].getBoundingClientRect().width + 16;
+      track.style.transform = `translateX(${-index * width}px)`;
+      Array.from(controls.children).forEach((b, idx) => b.classList.toggle('active', idx === index));
+    }
+    let auto = setInterval(() => {
+      index = (index + 1) % total;
+      update();
+    }, 4500);
+    function resetAuto() {
+      clearInterval(auto);
+      auto = setInterval(() => {
+        index = (index + 1) % total;
+        update();
+      }, 4500);
+    }
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Smooth scroll on hero CTA
+  document.querySelectorAll('.hero-cta').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Small accessibility: reduce motion if user prefers
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (mq && mq.matches) {
+    document.querySelectorAll('*').forEach(el => {
+      el.style.animation = 'none';
+      el.style.transition = 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

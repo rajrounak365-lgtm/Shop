@@ -352,43 +352,62 @@
     font-size: 22px;
     user-select: none;
   }
-  .reviews-track {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-  .review {
-    flex: 0 0 auto;
-    min-width: 340px;
-    padding: 20px 22px;
-    border-radius: 16px;
-    background: var(--card);
-    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.5);
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.5;
-    user-select: none;
-  }
-  .review h4 {
-    color: var(--gold);
-    margin-bottom: 10px;
-    font-weight: 800;
-    font-size: 18px;
-  }
-  .review p {
-    font-size: 15px;
-    line-height: 1.5;
-    font-weight: 400;
-  }
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden; /* hide scrollbar */
+  scroll-behavior: smooth;
+  padding: 0 50px; /* <-- important: gives space for first/last card */
+}
 
-  .review-controls {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 16px;
-  }
+.review {
+  flex: 0 0 340px;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.7);
+  box-shadow: 0 14px 32px rgba(212,175,55,0.3);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+  transform: scale(0.9);
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0.6;
+}
+
+.review.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+.review h4 {
+  color: var(--gold);
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.review-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.review-dots .dot.active {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
   .rc-btn {
     background: transparent;
     border: 1.5px solid rgba(255, 255, 255, 0.1);
@@ -609,7 +628,7 @@
       padding: 16px 18px;
     }
   }
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
   .trust-row {
     flex-wrap: wrap;
     gap: 12px;
@@ -622,6 +641,7 @@
     font-size: 15px;
   }
 }
+
 
 </style>
 </head>
@@ -709,24 +729,26 @@
     </div>
 
     <!-- Reviews -->
-    <div class="reviews" aria-label="Customer reviews">
-      <h3>What Customers Say</h3>
-      <div class="reviews-track" id="reviewsTrack" role="list">
-        <div class="review" role="listitem" tabindex="0">
-          <h4>Excellent quality</h4>
-          <p>“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.</p>
-        </div>
-        <div class="review" role="listitem" tabindex="0">
-          <h4>Trusted store</h4>
-          <p>“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.</p>
-        </div>
-        <div class="review" role="listitem" tabindex="0">
-          <h4>Great variety</h4>
-          <p>“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.</p>
-        </div>
-      </div>
-      <div class="review-controls" id="reviewControls" aria-label="Review navigation" aria-hidden="false"></div>
+   <div class="reviews" aria-label="Customer reviews">
+  <h3>What Customers Say</h3>
+  <div class="reviews-track" id="reviewsTrack" role="list">
+    <div class="review" role="listitem" tabindex="0">
+      <h4>Excellent quality</h4>
+      <p>“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.</p>
     </div>
+    <div class="review" role="listitem" tabindex="0">
+      <h4>Trusted store</h4>
+      <p>“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.</p>
+    </div>
+    <div class="review" role="listitem" tabindex="0">
+      <h4>Great variety</h4>
+      <p>“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.</p>
+    </div>
+  </div>
+  <div class="review-dots" id="reviewDots"></div>
+</div>
+
+
 
   </section>
 
@@ -841,6 +863,57 @@
     });
   }
 </script>
+<script>
+const track = document.getElementById('reviewsTrack');
+const reviews = document.querySelectorAll('.review');
+const dotsContainer = document.getElementById('reviewDots');
+let index = 0;
+
+// Create dots
+reviews.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.classList.add('dot');
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click', ()=> {
+    index = i;
+    updateSlider();
+  });
+  dotsContainer.appendChild(dot);
+});
+
+function updateSlider() {
+  const containerWidth = track.offsetWidth;
+  const activeReview = reviews[index];
+  const reviewWidth = activeReview.offsetWidth;
+
+  // center the active review
+  const scrollLeft = activeReview.offsetLeft - (containerWidth/2 - reviewWidth/2);
+
+  track.scrollTo({
+    left: scrollLeft,
+    behavior: 'smooth'
+  });
+
+  // activate the review
+  reviews.forEach(r=> r.classList.remove('active'));
+  activeReview.classList.add('active');
+
+  // update dots
+  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.dot')[index].classList.add('active');
+}
+
+function autoSlide() {
+  index = (index + 1) % reviews.length;
+  updateSlider();
+}
+
+// initialize
+reviews[0].classList.add('active');
+setInterval(autoSlide, 4000);
+
+</script>
+
 
 </body>
 </html>

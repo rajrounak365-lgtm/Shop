@@ -572,6 +572,24 @@
     outline: none;
   }
 
+  /* Language switch button */
+  #lang-switch {
+    background: var(--gold);
+    color: #111;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  #lang-switch:hover,
+  #lang-switch:focus-visible {
+    background: #ffbf6b;
+    outline: none;
+  }
+
   /* responsive */
   @media (max-width: 1000px) {
     .container {
@@ -642,7 +660,6 @@
   }
 }
 
-
 </style>
 </head>
 <body>
@@ -651,14 +668,16 @@
   <div class="brand">
     <div class="logo-frame"><img src="logo.png" alt="logo"></div>
     <div>
-      <h1>Dinesh Kirana</h1>
-      <div class="sub-title">Trusted Grocery Store • Since 1998</div>
+      <h1 data-i18n="brandName">Dinesh Kirana</h1>
+      <div class="sub-title" data-i18n="trustedSince">Trusted Grocery Store • Since 1998</div>
     </div>
   </div>
 
+  <button id="lang-switch" aria-label="Switch Language">हिन्दी</button>
+
   <div class="contact" role="contentinfo" aria-label="Contact information">
     <div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.7)">Contact</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.7)" data-i18n="contactLabel">Contact</div>
       <div class="phone" aria-label="Phone number">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
           <path d="M2.004 3.001a1 1 0 0 1 1.003-1h3.588a1 1 0 0 1 .986 1.204l-.654 3.27a1 1 0 0 1-.976.77l-2.1.11a11.041 11.041 0 0 0 5.516 5.516l.11-2.1a1 1 0 0 1 .77-.976l3.269-.654a1 1 0 0 1 1.204.987v3.589a1 1 0 0 1-1 1c-7.18 0-13-5.82-13-13z"/>
@@ -667,8 +686,8 @@
       </div>
     </div>
     <div style="text-align:right" aria-label="Store opening hours and community service">
-      <small>Open: <strong>7 AM — 10 PM</strong></small>
-      <div style="font-size:12px;margin-top:6px;color:var(--muted)">Serving the community 25+ years</div>
+      <small><span data-i18n="open">Open:</span> <strong>7 AM — 10 PM</strong></small>
+      <div style="font-size:12px;margin-top:6px;color:var(--muted)" data-i18n="communityService">Serving the community 25+ years</div>
     </div>
   </div>
 </header>
@@ -680,25 +699,25 @@
     <!-- HERO -->
     <div class="hero" role="img" aria-label="Shop hero with fresh groceries">
       <div class="hero-left">
-        <h2>Fresh • Trusted • Affordable</h2>
-        <p>Daily groceries, fresh produce, essentials — handpicked for your family. Experience friendly neighbourhood service for over <strong>25 years</strong>.</p>
-        <a class="hero-cta" href="#categories" role="button" tabindex="0">Explore Categories</a>
+        <h2 data-i18n="heroHeading">Fresh • Trusted • Affordable</h2>
+        <p data-i18n="heroParagraph">Daily groceries, fresh produce, essentials — handpicked for your family. Experience friendly neighbourhood service for over <strong>25 years</strong>.</p>
+        <a class="hero-cta" href="#categories" role="button" tabindex="0" data-i18n="exploreCategories">Explore Categories</a>
 
         <div class="trust-row" style="margin-top:18px" aria-label="Store trust and quality stats">
           <div class="badge" aria-label="25 plus years award">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2l2.39 6.93h7.29l-5.9 4.28 2.38 6.93-5.9-4.28-5.9 4.28 2.39-6.93-5.9-4.28h7.29z"/></svg>
-            25+ Years
+            <span data-i18n="yearsPlus">25+ Years</span>
           </div>
-          <div class="stat" aria-label="Local favorite status">Local Favorite</div>
-          <div class="stat" aria-label="Quality produce status">Quality Produce</div>
+          <div class="stat" aria-label="Local favorite status" data-i18n="localFavorite">Local Favorite</div>
+          <div class="stat" aria-label="Quality produce status" data-i18n="qualityProduce">Quality Produce</div>
         </div>
 
         <!-- Offers -->
         <div class="offers" aria-live="polite" aria-atomic="true" aria-label="Current offers">
           <div class="offers-track" id="offersTrack">
-            <div class="offer-item">Flat 5% off on Pulses — This Week Only</div>
-            <div class="offer-item">Fresh Veggies Arrived — Special Prices</div>
-            <div class="offer-item">Sugar &amp; Atta: Daily Morning Deals</div>
+            <div class="offer-item" data-i18n="offer1">Flat 5% off on Pulses — This Week Only</div>
+            <div class="offer-item" data-i18n="offer2">Fresh Veggies Arrived — Special Prices</div>
+            <div class="offer-item" data-i18n="offer3">Sugar &amp; Atta: Daily Morning Deals</div>
           </div>
         </div>
 
@@ -719,36 +738,34 @@
 
     <!-- Categories -->
     <div id="categories" class="categories" aria-label="Product categories">
-      <div class="cat" tabindex="0">Vegetables</div>
-      <div class="cat" tabindex="0">Dairy &amp; Beverages</div>
-      <div class="cat" tabindex="0">Rice, Flour &amp; Grains</div>
-      <div class="cat" tabindex="0">Snacks &amp; Biscuits</div>
-      <div class="cat" tabindex="0">Oils &amp; Spices</div>
-      <div class="cat" tabindex="0">Soaps &amp; Cleaning</div>
-      <div class="cat" tabindex="0">Pooja Samagri (Kapoor, Dhoop, Agarbatti, Haldi, Kumkum)</div>
+      <div class="cat" tabindex="0" data-i18n="categoryVegetables">Vegetables</div>
+      <div class="cat" tabindex="0" data-i18n="categoryDairy">Dairy &amp; Beverages</div>
+      <div class="cat" tabindex="0" data-i18n="categoryRiceFlour">Rice, Flour &amp; Grains</div>
+      <div class="cat" tabindex="0" data-i18n="categorySnacks">Snacks &amp; Biscuits</div>
+      <div class="cat" tabindex="0" data-i18n="categoryOilsSpices">Oils &amp; Spices</div>
+      <div class="cat" tabindex="0" data-i18n="categorySoapsCleaning">Soaps &amp; Cleaning</div>
+      <div class="cat" tabindex="0" data-i18n="categoryPooja">Pooja Samagri (Kapoor, Dhoop, Agarbatti, Haldi, Kumkum)</div>
     </div>
 
     <!-- Reviews -->
    <div class="reviews" aria-label="Customer reviews">
-  <h3>What Customers Say</h3>
+  <h3 data-i18n="reviewsHeading">What Customers Say</h3>
   <div class="reviews-track" id="reviewsTrack" role="list">
     <div class="review" role="listitem" tabindex="0">
-      <h4>Excellent quality</h4>
-      <p>“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.</p>
+      <h4 data-i18n="review1Title">Excellent quality</h4>
+      <p data-i18n="review1Text">“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.</p>
     </div>
     <div class="review" role="listitem" tabindex="0">
-      <h4>Trusted store</h4>
-      <p>“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.</p>
+      <h4 data-i18n="review2Title">Trusted store</h4>
+      <p data-i18n="review2Text">“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.</p>
     </div>
     <div class="review" role="listitem" tabindex="0">
-      <h4>Great variety</h4>
-      <p>“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.</p>
+      <h4 data-i18n="review3Title">Great variety</h4>
+      <p data-i18n="review3Text">“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.</p>
     </div>
   </div>
   <div class="review-dots" id="reviewDots"></div>
 </div>
-
-
 
   </section>
 
@@ -756,14 +773,14 @@
   <aside class="side" aria-label="Sidebar information">
     <div class="card-side" role="region" aria-labelledby="brand-title">
       <div class="gold-frame"><img src="logo.png" alt="brand logo"></div>
-      <div id="brand-title" style="text-align:center;margin-top:14px;font-weight:800;color:var(--gold);font-size:18px;">Dinesh Kirana</div>
-      <div style="text-align:center;color:var(--muted);margin-top:8px;font-size:15px;">Premium Local Grocery • Since 1998</div>
+      <div id="brand-title" style="text-align:center;margin-top:14px;font-weight:800;color:var(--gold);font-size:18px;" data-i18n="brandName">Dinesh Kirana</div>
+      <div style="text-align:center;color:var(--muted);margin-top:8px;font-size:15px;" data-i18n="premiumLocal">Premium Local Grocery • Since 1998</div>
 
       <div style="margin-top:16px" class="owner">
         <img src="owner.jpeg" alt="owner Dinesh Chaurashiya">
         <div>
-          <div class="meta">Owner: Dinesh Chaurashiya</div>
-          <div>Welcoming customers every day</div>
+          <div class="meta" data-i18n="ownerName">Owner: Dinesh Chaurashiya</div>
+          <div data-i18n="ownerWelcome">Welcoming customers every day</div>
         </div>
       </div>
 
@@ -772,15 +789,15 @@
           <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 1a11 11 0 1 0 11 11A11.013 11.013 0 0 0 12 1Zm.5 6.25v5.5l4.75 2.85-.75 1.23-5.5-3.3V7.25Z"/>
           </svg>
-          Opening
+          <span data-i18n="opening">Opening</span>
         </div>
         <div>
           <div style="font-weight:900;color:#bfffbf">7 AM — 10 PM</div>
-          <small style="font-size:12px;color:var(--muted)">Open Today</small>
+          <small style="font-size:12px;color:var(--muted)" data-i18n="openToday">Open Today</small>
         </div>
       </div>
 
-      <a class="map-btn" target="_blank" href="https://www.google.com/search?q=Dinesh+Kirana" aria-label="View store location on map">
+      <a class="map-btn" target="_blank" href="https://www.google.com/search?q=Dinesh+Kirana" aria-label="View store location on map" data-i18n="viewOnMap">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; width: 18px; height: 18px; margin-right: 6px;">
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/>
         </svg>
@@ -789,16 +806,16 @@
     </div>
 
     <div class="card-side" role="region" aria-labelledby="owner-message-title">
-      <h4 id="owner-message-title" style="color:var(--gold);margin-bottom:8px; user-select:none;">Owner's Message</h4>
-      <p style="color:var(--muted);font-size:15px;line-height:1.5; font-weight: 400;">
+      <h4 id="owner-message-title" style="color:var(--gold);margin-bottom:8px; user-select:none;" data-i18n="ownerMessageTitle">Owner's Message</h4>
+      <p style="color:var(--muted);font-size:15px;line-height:1.5; font-weight: 400;" data-i18n="ownerMessage">
         Welcome to Dinesh Kirana — our family has proudly served fresh groceries for over 25 years. We value trust, quality, and community. Visit us for daily fresh picks.
       </p>
     </div>
 
     <div class="card-side" style="text-align:center" role="region" aria-label="Contact information">
-      <div style="font-size:14px;color:var(--muted); user-select:none;">Contact</div>
+      <div style="font-size:14px;color:var(--muted); user-select:none;" data-i18n="contactLabel">Contact</div>
       <div style="font-size:22px;font-weight:800;margin-top:8px; user-select:none;">+91 9576450015</div>
-      <a class="map-btn transparent" href="tel:9576450015" aria-label="Call store now">Call Now</a>
+      <a class="map-btn transparent" href="tel:9576450015" aria-label="Call store now" data-i18n="callNow">Call Now</a>
     </div>
 
   </aside>
@@ -806,6 +823,115 @@
 </main>
 
 <script>
+  const translations = {
+    en: {
+      brandName: "Dinesh Kirana",
+      trustedSince: "Trusted Grocery Store • Since 1998",
+      contactLabel: "Contact",
+      open: "Open:",
+      communityService: "Serving the community 25+ years",
+      heroHeading: "Fresh • Trusted • Affordable",
+      heroParagraph: "Daily groceries, fresh produce, essentials — handpicked for your family. Experience friendly neighbourhood service for over <strong>25 years</strong>.",
+      exploreCategories: "Explore Categories",
+      yearsPlus: "25+ Years",
+      localFavorite: "Local Favorite",
+      qualityProduce: "Quality Produce",
+      offer1: "Flat 5% off on Pulses — This Week Only",
+      offer2: "Fresh Veggies Arrived — Special Prices",
+      offer3: "Sugar & Atta: Daily Morning Deals",
+      categoryVegetables: "Vegetables",
+      categoryDairy: "Dairy & Beverages",
+      categoryRiceFlour: "Rice, Flour & Grains",
+      categorySnacks: "Snacks & Biscuits",
+      categoryOilsSpices: "Oils & Spices",
+      categorySoapsCleaning: "Soaps & Cleaning",
+      categoryPooja: "Pooja Samagri (Kapoor, Dhoop, Agarbatti, Haldi, Kumkum)",
+      reviewsHeading: "What Customers Say",
+      review1Title: "Excellent quality",
+      review1Text: "“Best place for daily groceries — fresh fruits and friendly staff. Prices are fair and quality is consistent.” — Priya R.",
+      review2Title: "Trusted store",
+      review2Text: "“Been shopping here for years. Always reliable and clean. Love their morning produce.” — Rajesh K.",
+      review3Title: "Great variety",
+      review3Text: "“Wide range of brands and local staples. The shopkeeper always recommends the freshest picks.” — Sunita S.",
+      premiumLocal: "Premium Local Grocery • Since 1998",
+      ownerName: "Owner: Dinesh Chaurashiya",
+      ownerWelcome: "Welcoming customers every day",
+      opening: "Opening",
+      openToday: "Open Today",
+      viewOnMap: "View on Map",
+      ownerMessageTitle: "Owner's Message",
+      ownerMessage: "Welcome to Dinesh Kirana — our family has proudly served fresh groceries for over 25 years. We value trust, quality, and community. Visit us for daily fresh picks.",
+      callNow: "Call Now"
+    },
+    hi: {
+      brandName: "दिनेश किराना",
+      trustedSince: "विश्वसनीय किराना स्टोर • 1998 से",
+      contactLabel: "संपर्क करें",
+      open: "खुला:",
+      communityService: "25+ वर्षों से समुदाय की सेवा",
+      heroHeading: "ताजा • विश्वसनीय • किफायती",
+      heroParagraph: "दैनिक किराना, ताजी सब्जियां, आवश्यकताएं — आपके परिवार के लिए चुनी गईं। 25 वर्षों से मित्रवत पड़ोस सेवा का अनुभव करें।",
+      exploreCategories: "श्रेणियां देखें",
+      yearsPlus: "25+ वर्ष",
+      localFavorite: "स्थानीय पसंदीदा",
+      qualityProduce: "उत्तम गुणवत्ता",
+      offer1: "दालों पर फ्लैट 5% छूट — केवल इस सप्ताह",
+      offer2: "ताजी सब्जियां आईं — विशेष मूल्य",
+      offer3: "शुगर और आटा: दैनिक सुबह के सौदे",
+      categoryVegetables: "सब्जियां",
+      categoryDairy: "डेयरी और पेय",
+      categoryRiceFlour: "चावल, आटा और अनाज",
+      categorySnacks: "नाश्ते और बिस्कुट",
+      categoryOilsSpices: "तेल और मसाले",
+      categorySoapsCleaning: "साबुन और सफाई",
+      categoryPooja: "पूजा सामग्री (कपूर, धूप, अगरबत्ती, हल्दी, कुमकुम)",
+      reviewsHeading: "ग्राहकों की राय",
+      review1Title: "उत्कृष्ट गुणवत्ता",
+      review1Text: "“दैनिक किराने के लिए सबसे अच्छी जगह — ताजे फल और मित्रवत कर्मचारी। कीमतें उचित और गुणवत्ता लगातार है।” — प्रिया आर।",
+      review2Title: "विश्वसनीय स्टोर",
+      review2Text: "“यहां वर्षों से खरीदारी कर रहा हूँ। हमेशा भरोसेमंद और साफ। सुबह की ताजी सब्जियां पसंद हैं।” — राजेश के।",
+      review3Title: "विविधता अच्छी",
+      review3Text: "“ब्रांड्स और स्थानीय सामानों की विस्तृत श्रृंखला। दुकानदार हमेशा सबसे ताजा चीजें सुझाते हैं।” — सुनीता एस।",
+      premiumLocal: "प्रीमियम स्थानीय किराना • 1998 से",
+      ownerName: "मालिक: दिनेश चौरसिया",
+      ownerWelcome: "हर दिन ग्राहकों का स्वागत करते हैं",
+      opening: "खुला",
+      openToday: "आज खुला है",
+      viewOnMap: "मैप पर देखें",
+      ownerMessageTitle: "मालिक का संदेश",
+      ownerMessage: "दिनेश किराना में आपका स्वागत है — हमारा परिवार 25 वर्षों से ताजा किराना गर्व से प्रदान करता है। हम विश्वास, गुणवत्ता और समुदाय को महत्व देते हैं। दैनिक ताजा सामान के लिए आएं।",
+      callNow: "अब कॉल करें"
+    }
+  };
+
+  const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+  const langSwitchBtn = document.getElementById('lang-switch');
+  let currentLang = 'en';
+
+  function translatePage(lang) {
+    elementsToTranslate.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key]) {
+        if (el.tagName.toLowerCase() === 'p' || el.tagName.toLowerCase() === 'div' || el.tagName.toLowerCase() === 'span' || el.tagName.toLowerCase() === 'a') {
+          el.innerHTML = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
+    });
+    // Change button text accordingly
+    langSwitchBtn.textContent = lang === 'en' ? 'हिन्दी' : 'English';
+    currentLang = lang;
+  }
+
+  langSwitchBtn.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'hi' : 'en';
+    translatePage(newLang);
+  });
+
+  // Initialize page language
+  translatePage(currentLang);
+
   // Simple reviews slider (auto + manual)
   (function() {
     const track = document.getElementById('reviewsTrack');
@@ -814,22 +940,26 @@
     const total = reviews.length;
     let index = 0;
     // create controls
-    for (let i = 0; i < total; i++) {
-      const btn = document.createElement('button');
-      btn.className = 'rc-btn' + (i === 0 ? ' active' : '');
-      btn.textContent = i + 1;
-      btn.setAttribute('aria-label', 'View review ' + (i + 1));
-      btn.onclick = () => {
-        index = i;
-        update();
-        resetAuto();
-      };
-      controls.appendChild(btn);
+    if(controls) {
+      for (let i = 0; i < total; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'rc-btn' + (i === 0 ? ' active' : '');
+        btn.textContent = i + 1;
+        btn.setAttribute('aria-label', 'View review ' + (i + 1));
+        btn.onclick = () => {
+          index = i;
+          update();
+          resetAuto();
+        };
+        controls.appendChild(btn);
+      }
     }
     function update() {
       const width = reviews[0].getBoundingClientRect().width + 16;
       track.style.transform = `translateX(${-index * width}px)`;
-      Array.from(controls.children).forEach((b, idx) => b.classList.toggle('active', idx === index));
+      if(controls) {
+        Array.from(controls.children).forEach((b, idx) => b.classList.toggle('active', idx === index));
+      }
     }
     let auto = setInterval(() => {
       index = (index + 1) % total;
@@ -862,55 +992,55 @@
       el.style.transition = 'none';
     });
   }
-</script>
-<script>
-const track = document.getElementById('reviewsTrack');
-const reviews = document.querySelectorAll('.review');
-const dotsContainer = document.getElementById('reviewDots');
-let index = 0;
 
-// Create dots
-reviews.forEach((_, i) => {
-  const dot = document.createElement('div');
-  dot.classList.add('dot');
-  if(i===0) dot.classList.add('active');
-  dot.addEventListener('click', ()=> {
-    index = i;
+  // Review slider dots
+  const track = document.getElementById('reviewsTrack');
+  const reviews = document.querySelectorAll('.review');
+  const dotsContainer = document.getElementById('reviewDots');
+  let index = 0;
+
+  // Create dots
+  reviews.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(i===0) dot.classList.add('active');
+    dot.addEventListener('click', ()=> {
+      index = i;
+      updateSlider();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  function updateSlider() {
+    const containerWidth = track.offsetWidth;
+    const activeReview = reviews[index];
+    const reviewWidth = activeReview.offsetWidth;
+
+    // center the active review
+    const scrollLeft = activeReview.offsetLeft - (containerWidth/2 - reviewWidth/2);
+
+    track.scrollTo({
+      left: scrollLeft,
+      behavior: 'smooth'
+    });
+
+    // activate the review
+    reviews.forEach(r=> r.classList.remove('active'));
+    activeReview.classList.add('active');
+
+    // update dots
+    document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.dot')[index].classList.add('active');
+  }
+
+  function autoSlide() {
+    index = (index + 1) % reviews.length;
     updateSlider();
-  });
-  dotsContainer.appendChild(dot);
-});
+  }
 
-function updateSlider() {
-  const containerWidth = track.offsetWidth;
-  const activeReview = reviews[index];
-  const reviewWidth = activeReview.offsetWidth;
-
-  // center the active review
-  const scrollLeft = activeReview.offsetLeft - (containerWidth/2 - reviewWidth/2);
-
-  track.scrollTo({
-    left: scrollLeft,
-    behavior: 'smooth'
-  });
-
-  // activate the review
-  reviews.forEach(r=> r.classList.remove('active'));
-  activeReview.classList.add('active');
-
-  // update dots
-  document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-  document.querySelectorAll('.dot')[index].classList.add('active');
-}
-
-function autoSlide() {
-  index = (index + 1) % reviews.length;
-  updateSlider();
-}
-
-// initialize
-reviews[0].classList.add('active');
-setInterval(autoSlide, 4000);
+  // initialize
+  reviews[0].classList.add('active');
+  setInterval(autoSlide, 4000);
 
 </script>
 </body>

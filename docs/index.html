@@ -799,22 +799,150 @@
 
       .hero-left {
         width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .hero-art {
+        display: none;
+        /* Hide art on mobile to save space */
       }
 
       .gold-frame {
-        width: 96px;
-        height: 96px;
+        width: 80px;
+        height: 80px;
       }
 
       .cat {
-        font-size: 14px;
-        padding: 14px 10px;
+        font-size: 13px;
+        padding: 12px 8px;
+        gap: 8px;
+      }
+
+      .cat i {
+        font-size: 20px;
       }
 
       .review {
-        min-width: 280px;
+        flex: 0 0 100%;
+        min-width: unset;
+        max-width: 100%;
+        margin: 0;
         font-size: 14px;
-        padding: 16px 18px;
+        padding: 20px;
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .reviews-track {
+        display: flex;
+        /* Keep it horizontal for sliding effect */
+        gap: 0;
+        padding: 0;
+      }
+
+      .reviews {
+        padding: 24px 15px;
+      }
+
+      /* Stack modal on mobile */
+      .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-img {
+        padding: 20px;
+      }
+
+      .modal-img i,
+      .modal-img img {
+        font-size: 60px !important;
+        width: 120px !important;
+        height: 120px !important;
+      }
+
+      .modal-details {
+        padding: 20px;
+      }
+
+      header {
+        position: relative;
+        /* Prevent header from covering info while scrolling */
+        flex-direction: column;
+        padding: 12px;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .contact {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 5px;
+      }
+
+      .contact .phone {
+        font-size: 14px;
+        padding: 6px 14px;
+      }
+
+      header .contact>div:last-child {
+        display: none;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 30px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 30px 20px;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .hero h2 {
+        font-size: 28px !important;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 15px !important;
+        max-width: 100% !important;
+        margin: 15px auto !important;
+      }
+
+      .trust-row {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      .side {
+        order: 2;
+      }
+
+      .main {
+        order: 1;
       }
     }
 
@@ -1094,7 +1222,19 @@
     @media (max-width: 768px) {
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 12px;
+      }
+
+      .product-card {
+        padding: 12px;
+      }
+
+      .product-info h4 {
+        font-size: 14px;
+      }
+
+      .product-price {
+        font-size: 16px;
       }
 
       .whatsapp-btn {
@@ -1103,6 +1243,11 @@
         width: 50px;
         height: 50px;
         font-size: 25px;
+      }
+
+      .whatsapp-btn::after {
+        display: none;
+        /* Hide hover text on mobile */
       }
     }
 
@@ -1677,7 +1822,8 @@
       function updateSlider() {
         const trackWidth = track.parentElement.offsetWidth;
         const reviewWidth = reviews[0].offsetWidth;
-        const gap = 20;
+        const isMobile = window.innerWidth <= 768;
+        const gap = isMobile ? 0 : 20;
 
         // Calculate the offset to center the active slide
         const offset = (trackWidth / 2) - (reviewWidth / 2) - (index * (reviewWidth + gap));
@@ -1701,7 +1847,7 @@
       function startAutoPlay() {
         autoPlayInterval = setInterval(() => {
           goToSlide(index + 1);
-        }, 5000);
+        }, 3000); // Faster slide for better visibility
       }
 
       function stopAutoPlay() {
